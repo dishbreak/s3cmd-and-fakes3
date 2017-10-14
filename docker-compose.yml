@@ -1,0 +1,17 @@
+version: '2'
+services:
+  fakes3:
+    image: lphoward/fake-s3
+    volumes:
+      # The container is hardcoded to serve files out of 
+      - ./fake_s3_bucket_files:/fakes3_root
+    networks:
+      # This is the network that our s3cmd container will join when it launches.
+      s3cmd-network:
+        aliases:
+          # This allows us to use `my-bucket` as a name in s3cmd
+          - my-bucket.fakes3
+    ports:
+      - '4569:4569'
+networks:
+  s3cmd-network:
