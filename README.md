@@ -34,6 +34,7 @@ Now, launch the Docker container with the s3cmd binary installed. There's a scri
 * Creates a custom container based off of it that has a special config file.
 * Launches an instance of the custom container and attaches a shell session to it.
 
+Here's what a run of the script looks like.
 
     $ ./connect_to_fake_s3.sh
     Sending build context to Docker daemon  4.608kB
