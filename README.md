@@ -22,15 +22,18 @@ This launches the fake-s3 container. It's available on our docker-machine, on po
 
 You can copy arbitrary files to the fake S3 using the AWS CLI. Note the `endpoint` flag.
 
+
    $ echo "hi this is a test" > foo.txt
    $ aws s3 --endpoint cp http://192.168.99.100:4569 foo.txt s3://my-bucket/
    upload: ./foo.txt to s3://my-bucket/foo.txt
+
 
 Now, launch the Docker container with the s3cmd binary installed. There's a script in `s3cmd/` that will do that for you. The script does the following things.
 
 * Downloads the `garland/docker-s3cmd` binary.
 * Creates a custom container based off of it that has a special config file.
 * Launches an instance of the custom container and attaches a shell session to it.
+
 
     $ ./connect_to_fake_s3.sh
     Sending build context to Docker daemon  4.608kB
@@ -58,11 +61,13 @@ Now, launch the Docker container with the s3cmd binary installed. There's a scri
 
 We can use this container and download the file we put in fake s3.
 
+
     / # s3cmd get s3://my-bucket/foo.txt
     download: 's3://my-bucket/foo.txt' -> './foo.txt'  [1 of 1]
      18 of 18   100% in    0s  1750.80 B/s  done
     / # cat foo.txt
     hi this is a test
+
 
 That's about it.
 
