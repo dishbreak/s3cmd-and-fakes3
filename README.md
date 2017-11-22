@@ -24,7 +24,7 @@ You can copy arbitrary files to the fake S3 using the AWS CLI. Note the `endpoin
 
 ```
 $ echo "hi this is a test" > foo.txt
-$ aws s3 --endpoint cp http://192.168.99.100:4569 foo.txt s3://my-bucket/
+$ aws s3 cp --endpoint http://192.168.99.100:4569 foo.txt s3://my-bucket/
 upload: ./foo.txt to s3://my-bucket/foo.txt
 ```
 
